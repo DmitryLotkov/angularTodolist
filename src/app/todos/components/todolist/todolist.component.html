@@ -1,1 +1,3 @@
-<p>todolist works!</p>
+<div *ngFor='let todoLists of todos$ | async'>
+  {{ todoLists.title }}
+</div>

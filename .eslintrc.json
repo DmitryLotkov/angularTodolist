@@ -30,7 +30,17 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "types": {
+              "{}": false
+            },
+            "extendDefaults": true
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "off"
       }
     },
     {

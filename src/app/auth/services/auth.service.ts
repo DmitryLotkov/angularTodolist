@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ICommonResponse, ILoginRequest, ILoginResponse, MeResponse, ResultCodes} from '../../shared/models/core.model';
 import {environment} from '../../environment/enviroment.prod';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class AuthService {
   isAuth = false;
   userId!: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   me() {
@@ -22,9 +23,10 @@ export class AuthService {
   }
 
   login(data: ILoginRequest) {
-    this.http.post<ICommonResponse<ILoginResponse>>(`${environment.baseUrl}/auth/login`, {data}).subscribe((res) => {
+    this.http.post<ICommonResponse<ILoginResponse>>(`${environment.baseUrl}/auth/login`, {...data}).subscribe((res) => {
         if (res.resultCode === ResultCodes.success) {
-          this.userId = res.data.data.userId;
+          this.userId = res.data.userId;
+          this.router.navigate([""])
         }
       },
     );

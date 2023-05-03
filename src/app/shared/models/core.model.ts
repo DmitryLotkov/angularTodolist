@@ -17,9 +17,7 @@ export interface MeResponse {
   }
 }
 export interface ILoginResponse {
-  data: {
     userId: number
-  }
 }
 export interface ILoginRequest {
   email: string

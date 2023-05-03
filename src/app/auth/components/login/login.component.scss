@@ -1,0 +1,36 @@
+.login-wrapper {
+  display: flex;
+  width: max-content;
+  height: 400px;
+  margin: 0 auto;
+  background: #eeeeee;
+  justify-content: center;
+  border-radius: 5px;
+  flex-grow: 1;
+
+
+  .login-content {
+
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    &__rememberMe {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      column-gap: 1rem;
+      cursor: pointer;
+
+      label {
+        cursor: pointer;
+      }
+    }
+
+    /*&__submitButton {
+   font-size: 1rem
+ }*/
+  }
+
+}

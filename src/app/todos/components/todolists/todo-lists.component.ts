@@ -5,11 +5,11 @@ import {ITodoList} from '../../todolist.model';
 
 
 @Component({
-  selector: 'app-todolist',
-  templateUrl: './todolist.component.html',
-  styleUrls: ['./todolist.component.scss'],
+  selector: 'app-todo-lists',
+  templateUrl: './todo-lists.component.html',
+  styleUrls: ['./todo-lists.component.scss'],
 })
-export class TodolistComponent implements OnInit {
+export class TodoListsComponent implements OnInit {
   todos$!: Observable<ITodoList[]>
 constructor(private todolistService: TodolistService) {
 }

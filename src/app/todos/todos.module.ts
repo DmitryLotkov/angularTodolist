@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TodosRoutingModule } from './todos-routing.module';
-import { TodolistComponent } from './components/todolist/todolist.component';
+import { TodoListsComponent } from './components/todolists/todo-lists.component';
+import { TodoComponent } from './components/todolists/todolist/todo/todo.component';
 
 
 @NgModule({
   declarations: [
-    TodolistComponent
+    TodoListsComponent,
+    TodoComponent
   ],
   imports: [
     CommonModule,

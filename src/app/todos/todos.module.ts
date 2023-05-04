@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodoListsComponent } from './components/todolists/todo-lists.component';
-import { TodoComponent } from './components/todolists/todolist/todo/todo.component';
+import { TodoListComponent } from './components/todolists/todolist/todoList.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import {PanelModule} from 'primeng/panel';
 import {CardModule} from 'primeng/card';
@@ -16,7 +16,7 @@ import {SharedModule} from '../shared/shared.module';
 @NgModule({
   declarations: [
     TodoListsComponent,
-    TodoComponent,
+    TodoListComponent,
     TasksComponent
   ],
   imports: [

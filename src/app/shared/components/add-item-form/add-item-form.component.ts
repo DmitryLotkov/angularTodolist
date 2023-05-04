@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./add-item-form.component.scss']
 })
 export class AddItemFormComponent implements OnInit{
-  @Input() callBack!: (data:string) => void
+  @Output() submitTodoTitle = new EventEmitter<string>()
   @Input() formPlaceholder!: string
   addItemForm!: FormGroup
 
@@ -24,7 +24,7 @@ export class AddItemFormComponent implements OnInit{
   }
 
   inputHandler() {
-    this.callBack(this.addItemForm.value())
+    this.submitTodoTitle.emit(this.addItemForm.value)
     this.addItemForm.reset()
   }
 }

@@ -1,4 +1,2 @@
-<app-add-item-form formPlaceholder='Enter todoList title'
-
-></app-add-item-form>
+<app-add-item-form formPlaceholder='Enter todoList title' (submitTodoTitle)="getTodolistTitle($event)"></app-add-item-form>
 <router-outlet></router-outlet>

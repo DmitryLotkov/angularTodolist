@@ -20,12 +20,16 @@ export class TodolistService {
     });
   }
 
-  addTodos(title: string) {
+  addTodos(title: any) {
     this.http.post<ICommonResponse<{item: ITodoList}>>(`${environment.baseUrl}/todo-lists/`, {
-      title,
-    }).pipe(
-      map(() => this.todoLists$.getValue().push() )
-    )/*.subscribe(todos => this.todoLists$.next(todos));*/
+      title: title.inputData,
+    }).pipe(map(res => {
+      const stateTodos = this.todoLists$.getValue()
+      const newTodo = res.data.item
+      return [newTodo, ...stateTodos]
+    })).subscribe((res)=> {
+      this.todoLists$.next(res);
+    })
   }
 
   deleteTodolist(todolistId: string) {

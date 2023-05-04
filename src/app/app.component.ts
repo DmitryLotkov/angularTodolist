@@ -11,7 +11,8 @@ export class AppComponent {
   constructor(private todolistService:TodolistService) {
   }
 
-  getTodos(data: string) {
-    console.log(data);
+  getTodolistTitle(inputTitle: string) {
+    this.todolistService.addTodos(inputTitle)
   }
+
 }

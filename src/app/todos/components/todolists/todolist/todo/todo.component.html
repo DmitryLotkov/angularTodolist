@@ -1,4 +1,16 @@
-<div>title: {{ todolist.title }}</div>
-<div>created: {{ todolist.addedDate | date:'dd.MM.yy HH:mm' }}</div>
+<div class='todolistHeader'>
+  <p> {{ todolist.title }}</p>
+  <p-button icon="pi pi-trash"
+            styleClass="p-button-rounded p-button-danger p-button-text"
+            (click)='deleteTodoHandler()'
+  ></p-button>
+</div>
+  <app-tasks [todoListId]='todolist.id'></app-tasks>
+  <div>created: {{ todolist.addedDate | date:'dd.MM.yy HH:mm' }}</div>
+
+
+
+
+
 
 

@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ITodoList} from '../../../../todolist.model';
+import {TodolistService} from '../../../../services/todolist.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,4 +9,11 @@ import {ITodoList} from '../../../../todolist.model';
 })
 export class TodoComponent {
   @Input() todolist!: ITodoList
+
+  constructor(private todolistService: TodolistService ) {
+  }
+  deleteTodoHandler() {
+    this.todolistService.deleteTodolist(this.todolist.id)
+  }
+
 }

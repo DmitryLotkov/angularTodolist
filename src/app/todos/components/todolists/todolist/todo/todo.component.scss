@@ -1,6 +1,15 @@
 :host {
+  .todolistHeader {
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: center;
+  }
   display: flex;
   width: 300px;
   flex-direction: column;
-  border: 1px solid black;
+  align-items: center;
+  background: #FFF;
+  color: #495057;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
 }

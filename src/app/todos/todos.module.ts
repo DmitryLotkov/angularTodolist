@@ -10,6 +10,7 @@ import {CardModule} from 'primeng/card';
 import {CheckboxModule} from 'primeng/checkbox';
 import {FormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {ButtonModule} from 'primeng/button';
     CheckboxModule,
     FormsModule,
     ButtonModule,
+    SharedModule,
   ],
 })
 export class TodosModule { }

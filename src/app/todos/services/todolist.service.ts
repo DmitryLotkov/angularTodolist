@@ -23,16 +23,16 @@ export class TodolistService {
   addTodos(title: string) {
     this.http.post<ICommonResponse<{item: ITodoList}>>(`${environment.baseUrl}/todo-lists/`, {
       title,
-    }).subscribe((res) => {
-      console.log(res);
-    });
+    }).pipe(
+      map(() => this.todoLists$.getValue().push() )
+    )/*.subscribe(todos => this.todoLists$.next(todos));*/
   }
 
   deleteTodolist(todolistId: string) {
     this.http.delete(`${environment.baseUrl}/todo-lists/${todolistId}`)
       .pipe(
-        map(() => this.todoLists$.getValue().filter(tl => tl.id !== todolistId)
-        )
+        map(() => this.todoLists$.getValue().filter(tl => tl.id !== todolistId),
+        ),
       ).subscribe(todos => this.todoLists$.next(todos));
   }
 }

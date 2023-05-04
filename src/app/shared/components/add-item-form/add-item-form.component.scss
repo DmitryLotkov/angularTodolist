@@ -1,0 +1,14 @@
+.formContent {
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+
+}
+::ng-deep {
+  .p-button {
+    padding:12px !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+}

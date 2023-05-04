@@ -6,6 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
 import {HttpClientModule} from '@angular/common/http';
 import '@angular/common/locales/global/ru';
+import {SharedModule} from './shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import '@angular/common/locales/global/ru';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

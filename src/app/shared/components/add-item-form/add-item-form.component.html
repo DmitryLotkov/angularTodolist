@@ -1,0 +1,26 @@
+<form [formGroup]="addItemForm" (ngSubmit)="inputHandler()">
+  <div class='formContent'>
+      <label for="inputData"></label>
+      <input [placeholder]="formPlaceholder"
+             type="text"
+             class="p-inputtext-sm"
+             id="inputData"
+             pInputText
+             formControlName="inputData"
+             required minlength="4"
+             [ngClass]="{
+      inputError: inputData!.invalid,
+      inputSuccess: inputData!.valid}"
+      />
+
+    <div *ngIf="inputData!.invalid && (inputData!.touched)"
+         class="error">
+    </div>
+
+  <p-button type="submit"
+            icon="pi pi-plus"
+            styleClass="p-button-rounded p-button-text p-button-raised"
+            class="login-content__submitButton">
+  </p-button>
+  </div>
+</form>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="!isEditMode; else editableSpan">
+  <h4 (dblclick)="activateEditModeHandler()"> {{ title }}</h4>
+</ng-container>
+
+<ng-template #editableSpan>
+  <input [(ngModel)]="title"
+         (blur)="editTitleHandler()"
+         type="text"
+         autofocus
+         class="p-inputtext-sm"
+         id="password"
+         pInputText
+         required/>
+</ng-template>
+
+
+
+

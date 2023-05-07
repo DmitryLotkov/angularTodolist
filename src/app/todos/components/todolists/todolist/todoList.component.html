@@ -1,9 +1,11 @@
 <div class='todolistHeader'>
-  <h4> {{ todolist.title }}</h4>
+
+  <app-editable-field [title]="todolist.title" [todolistId]="todolist.id"></app-editable-field>
   <p-button icon='pi pi-trash'
             styleClass='p-button-rounded p-button-danger p-button-text'
             (click)='deleteTodoHandler()'
   ></p-button>
+
 </div>
 <app-add-item-form formPlaceholder='Enter task title'></app-add-item-form>
 <app-tasks [todoListId]='todolist.id'></app-tasks>

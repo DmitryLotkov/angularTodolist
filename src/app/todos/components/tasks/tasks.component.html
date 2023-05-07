@@ -1,9 +1,9 @@
-<ng-container *ngIf='(tasks$ | async)?.length !== 0; else elseBlock'>
+<!--<ng-container *ngIf='(tasks$ | async)?.length !== 0; else elseBlock'>-->
   <div *ngFor='let task of tasks$ | async'>
     <div>task title: {{ task.title }} </div>
     <p-checkbox [(ngModel)]="taskIsCompleted" ></p-checkbox>
   </div>
-</ng-container>
+<!--</ng-container>-->
 
 <ng-template #elseBlock>
   <p>No tasks yet</p>

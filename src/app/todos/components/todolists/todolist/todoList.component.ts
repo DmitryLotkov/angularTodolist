@@ -11,7 +11,9 @@ export class TodoListComponent {
   @Input() todolist!: ITodoList
   constructor(private todolistService: TodolistService ) {
   }
+
   deleteTodoHandler() {
     this.todolistService.deleteTodolist(this.todolist.id)
   }
+
 }

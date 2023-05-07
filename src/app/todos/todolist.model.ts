@@ -3,5 +3,4 @@ export interface ITodoList {
   title: string
   addedDate: string
   order: number
-
 }

@@ -21,13 +21,13 @@ export class TodolistService {
   }
 
   addTodos(title: any) {
-    this.http.post<ICommonResponse<{item: ITodoList}>>(`${environment.baseUrl}/todo-lists/`, {
+    this.http.post<ICommonResponse<{ item: ITodoList }>>(`${environment.baseUrl}/todo-lists/`, {
       title: title.inputData,
     }).pipe(map(res => {
       const stateTodos = this.todoLists$.getValue()
       const newTodo = res.data.item
       return [newTodo, ...stateTodos]
-    })).subscribe((res)=> {
+    })).subscribe((res) => {
       this.todoLists$.next(res);
     })
   }
@@ -38,6 +38,15 @@ export class TodolistService {
         map(() => this.todoLists$.getValue().filter(tl => tl.id !== todolistId),
         ),
       ).subscribe(todos => this.todoLists$.next(todos));
+  }
+
+  editTodolistTitle(todolistId: string, todolistTitle: string) {
+    this.http.put(`${environment.baseUrl}/todo-lists/${todolistId}`, {
+      title: todolistTitle
+    }).pipe(map(() => {
+      const stateTodos = this.todoLists$.getValue()
+      return stateTodos.map(tl => tl.id === todolistId ? {...tl, title: todolistTitle} : tl)
+    })).subscribe(todos => this.todoLists$.next(todos));
   }
 }
 

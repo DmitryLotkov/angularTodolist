@@ -7,7 +7,7 @@
   ></p-button>
 
 </div>
-<app-add-item-form formPlaceholder='Enter task title'></app-add-item-form>
+<app-add-item-form formPlaceholder='Enter task title' (submitTitle)="createTask($event)"></app-add-item-form>
 <app-tasks [todoListId]='todolist.id'></app-tasks>
 <div>created: {{ todolist.addedDate | date:'dd.MM.yy HH:mm' }}</div>
 

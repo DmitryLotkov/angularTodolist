@@ -16,3 +16,7 @@ export interface IGetTasksResponse {
   totalCount: number;
   error: null | string;
 }
+
+export interface DomainTasks {
+  [key: string] : ITask[]
+}

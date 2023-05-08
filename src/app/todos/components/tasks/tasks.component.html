@@ -1,8 +1,11 @@
 <!--<ng-container *ngIf='(tasks$ | async)?.length !== 0; else elseBlock'>-->
-  <div *ngFor='let task of tasks$ | async'>
-    <div>task title: {{ task.title }} </div>
+  <section *ngFor='let task of tasks$ | async' class="taskBlock">
     <p-checkbox [(ngModel)]="taskIsCompleted" ></p-checkbox>
-  </div>
+    <div>{{ task.title }} </div>
+    <p-button icon='pi pi-times'
+              styleClass='p-button-rounded p-button-danger p-button-text'
+    ></p-button>
+  </section>
 <!--</ng-container>-->
 
 <ng-template #elseBlock>

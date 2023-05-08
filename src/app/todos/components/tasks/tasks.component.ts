@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TasksService} from '../../services/tasks.service';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {ITask} from './model/task.model';
 
 
@@ -11,13 +11,14 @@ import {ITask} from './model/task.model';
 })
 export class TasksComponent implements OnInit {
   @Input() todoListId!: string;
-  tasks$: Observable<ITask[]> | undefined;
-  taskIsCompleted!: boolean
+  tasks$?: Observable<ITask[]>;
+  taskIsCompleted!: boolean;
 
   constructor(private taskService: TasksService) {
   }
 
   ngOnInit(): void {
-    this.tasks$ = this.taskService.getTasks(this.todoListId);
+    this.tasks$ = this.taskService.tasks$.pipe(map( (tasks) => tasks[this.todoListId]))
+    this.taskService.getTasks(this.todoListId);
   }
 }

@@ -11,8 +11,9 @@ import {ITodoList} from '../../todolist.model';
 })
 export class TodoListsComponent implements OnInit {
   todos$!: Observable<ITodoList[]>
-constructor(private todolistService: TodolistService) {
-}
+
+  constructor(private todolistService: TodolistService) {}
+
   ngOnInit() {
     this.todolistService.getTodos();
     this.todos$ = this.todolistService.todoLists$;

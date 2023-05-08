@@ -7,16 +7,16 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./add-item-form.component.scss']
 })
 export class AddItemFormComponent implements OnInit{
-  @Output() submitTodoTitle = new EventEmitter<string>()
+  @Output() submitTitle = new EventEmitter<string | null>()
   @Input() formPlaceholder!: string
-  addItemForm!: FormGroup
+  addItemForm!: FormGroup<{ inputData: FormControl<string | null> }>
 
   get inputData(){
     return this.addItemForm.get('inputData')
   }
   ngOnInit(): void {
     this.addItemForm = new FormGroup({
-      inputData: new FormControl("", [
+      inputData: new FormControl<string | null>("", [
         Validators.maxLength(100),
         Validators.minLength(4),
       ]),
@@ -24,7 +24,9 @@ export class AddItemFormComponent implements OnInit{
   }
 
   inputHandler() {
-    this.submitTodoTitle.emit(this.addItemForm.value)
-    this.addItemForm.reset()
+    if(this.addItemForm.value.inputData && this.addItemForm.valid) {
+      this.submitTitle.emit(this.addItemForm.value.inputData)
+      this.addItemForm.reset()
+    }
   }
 }

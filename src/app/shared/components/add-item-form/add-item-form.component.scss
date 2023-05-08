@@ -1,7 +1,10 @@
 .formContent {
   display: flex;
-  column-gap: 0.5rem;
+  justify-content: flex-start;
   align-items: center;
+  input{
+    margin-right: 0.5rem;
+  }
 
 }
 ::ng-deep {

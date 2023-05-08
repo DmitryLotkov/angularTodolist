@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {TodolistService} from "../../../todos/services/todolist.service";
 
 @Component({
@@ -21,7 +20,6 @@ export class EditableFieldComponent {
     this.isEditMode = true
   }
   editTitleHandler() {
-    debugger
     this.todolistService.editTodolistTitle(this.todolistId, this.title)
     this.isEditMode = false
   }

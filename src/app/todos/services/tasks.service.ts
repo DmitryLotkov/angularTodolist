@@ -40,5 +40,15 @@ export class TasksService {
         this.tasks$.next(tasks)
       })
   }
+  deleteTask(todoListId: string, taskId: string) {
+    return this.http.delete<ICommonResponse>(`${environment.baseUrl}/todo-lists/${todoListId}/tasks/${taskId}`)
+      .pipe(map(() => {
+        const stateTasks = this.tasks$.getValue()
+        stateTasks[todoListId] = stateTasks[todoListId].filter(task => task.id !==taskId)
+        return stateTasks
+      })).subscribe((tasks) => {
+        this.tasks$.next(tasks)
+      })
+  }
 
 }

@@ -4,6 +4,7 @@
     <div>{{ task.title }} </div>
     <p-button icon='pi pi-times'
               styleClass='p-button-rounded p-button-danger p-button-text'
+              (click)="deleteTaskHandler(task.id)"
     ></p-button>
   </section>
 <!--</ng-container>-->

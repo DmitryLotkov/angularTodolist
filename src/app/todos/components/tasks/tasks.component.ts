@@ -21,4 +21,7 @@ export class TasksComponent implements OnInit {
     this.tasks$ = this.taskService.tasks$.pipe(map( (tasks) => tasks[this.todoListId]))
     this.taskService.getTasks(this.todoListId);
   }
+  deleteTaskHandler(taskId:string) {
+    this.taskService.deleteTask(this.todoListId, taskId)
+  }
 }

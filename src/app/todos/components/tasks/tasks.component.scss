@@ -1,4 +1,4 @@
-.taskBlock{
+.task-block {
   display: flex;
   align-items: center;
   margin-top: 1rem;
@@ -8,5 +8,11 @@
   border-radius: 5px;
   border: 1px solid #AFAFAF;
   word-break: break-word;
+
+  &_completed {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
 }
+
 

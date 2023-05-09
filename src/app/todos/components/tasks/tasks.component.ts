@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TasksService} from '../../services/tasks.service';
 import {map, Observable} from 'rxjs';
-import {ITask} from './model/task.model';
+import {ITask, TaskStatusEnum} from './model/task.model';
 
 
 @Component({
@@ -14,9 +14,11 @@ export class TasksComponent implements OnInit {
   tasks$?: Observable<ITask[]>;
   constructor(private taskService: TasksService) {
   }
-
+  taskStatusEnum = TaskStatusEnum
   ngOnInit(): void {
     this.tasks$ = this.taskService.tasks$.pipe(map((tasks) => tasks[this.todoListId]))
     this.taskService.getTasks(this.todoListId);
   }
+
+  protected readonly TaskStatusEnum = TaskStatusEnum;
 }

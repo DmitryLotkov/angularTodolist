@@ -1,6 +1,6 @@
 <ng-container *ngIf='(tasks$ | async)?.length !== 0; else elseBlock'>
   <ng-container *ngFor='let task of tasks$ | async'>
-    <app-task [task]="task" class="taskBlock"></app-task>
+    <app-task [task]="task" class="task-block" [ngClass]="{'task-block_completed' : task.status === taskStatusEnum.completed}"></app-task>
   </ng-container>
 </ng-container>
 

@@ -12,16 +12,11 @@ import {ITask} from './model/task.model';
 export class TasksComponent implements OnInit {
   @Input() todoListId!: string;
   tasks$?: Observable<ITask[]>;
-  taskIsCompleted!: boolean;
-
   constructor(private taskService: TasksService) {
   }
 
   ngOnInit(): void {
-    this.tasks$ = this.taskService.tasks$.pipe(map( (tasks) => tasks[this.todoListId]))
+    this.tasks$ = this.taskService.tasks$.pipe(map((tasks) => tasks[this.todoListId]))
     this.taskService.getTasks(this.todoListId);
-  }
-  deleteTaskHandler(taskId:string) {
-    this.taskService.deleteTask(this.todoListId, taskId)
   }
 }

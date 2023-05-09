@@ -11,13 +11,15 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {FormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {SharedModule} from '../shared/shared.module';
+import { TaskComponent } from './components/tasks/task/task.component';
 
 
 @NgModule({
   declarations: [
     TodoListsComponent,
     TodoListComponent,
-    TasksComponent
+    TasksComponent,
+    TaskComponent
   ],
   imports: [
     CommonModule,

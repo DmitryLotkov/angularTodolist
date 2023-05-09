@@ -1,0 +1,10 @@
+<p-checkbox [ngModel]="checked === taskStatusEnum.completed" [binary]="true" inputId="binary"
+            (onChange)="editTaskStatusHandler()">
+</p-checkbox>
+<!-- <input type="checkbox" [checked]="task.status === taskStatusEnum.completed" (click)="editTaskStatusHandler($event, task.id,task.title)">-->
+<app-editable-field [title]="task.title" (submitInputData)="editTaskTitleHandler($event)"></app-editable-field>
+
+<p-button icon='pi pi-times'
+          styleClass='p-button-rounded p-button-danger p-button-text'
+          (click)="deleteTaskHandler(task.id)"
+></p-button>

@@ -1,10 +1,10 @@
 <div class='todolistHeader'>
 
-  <app-editable-field [title]="todolist.title" [todolistId]="todolist.id"></app-editable-field>
+  <h4><app-editable-field [title]="todolist.title" (submitInputData)="editTodolistTitle($event)"></app-editable-field></h4>
   <p-button icon='pi pi-trash'
             styleClass='p-button-rounded p-button-danger p-button-text'
-            (click)='deleteTodoHandler()'
-  ></p-button>
+            (click)='deleteTodoHandler()'>
+  </p-button>
 
 </div>
 <app-add-item-form formPlaceholder='Enter task title' (submitTitle)="createTask($event)"></app-add-item-form>

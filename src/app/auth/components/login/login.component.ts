@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit{
   constructor(private authService: AuthService) {
   }
   dispatchInputData() {
-    console.log(this.loginForm.value)
     this.authService.login(this.loginForm.value)
     this.loginForm.reset()
 

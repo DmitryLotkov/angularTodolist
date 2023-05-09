@@ -1,16 +1,9 @@
-<!--<ng-container *ngIf='(tasks$ | async)?.length !== 0; else elseBlock'>-->
-  <section *ngFor='let task of tasks$ | async' class="taskBlock">
-    <p-checkbox [(ngModel)]="taskIsCompleted" ></p-checkbox>
-    <div>{{ task.title }} </div>
-    <p-button icon='pi pi-times'
-              styleClass='p-button-rounded p-button-danger p-button-text'
-              (click)="deleteTaskHandler(task.id)"
-    ></p-button>
-  </section>
-<!--</ng-container>-->
+<ng-container *ngIf='(tasks$ | async)?.length !== 0; else elseBlock'>
+  <ng-container *ngFor='let task of tasks$ | async'>
+    <app-task [task]="task" class="taskBlock"></app-task>
+  </ng-container>
+</ng-container>
 
 <ng-template #elseBlock>
   <p>No tasks yet</p>
 </ng-template>
-
-

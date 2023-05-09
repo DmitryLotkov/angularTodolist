@@ -1,5 +1,5 @@
 <ng-container *ngIf="!isEditMode; else editableSpan">
-  <h4 (dblclick)="activateEditModeHandler()"> {{ title }}</h4>
+  <div (dblclick)="activateEditModeHandler()"> {{ title }}</div>
 </ng-container>
 
 <ng-template #editableSpan>

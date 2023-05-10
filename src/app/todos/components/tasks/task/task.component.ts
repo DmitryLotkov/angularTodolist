@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITask, TaskStatusEnum, UpdateTaskModel} from "../model/task.model";
+import {ITask, TaskStatusEnum} from "../model/task.model";
 import {TasksService} from "../../../services/tasks.service";
 
 @Component({

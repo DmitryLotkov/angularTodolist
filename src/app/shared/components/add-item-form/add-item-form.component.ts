@@ -8,6 +8,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AddItemFormComponent implements OnInit{
   @Output() submitTitle = new EventEmitter<string | null>()
+  @Input() isFullWidth!: boolean
   @Input() formPlaceholder!: string
   addItemForm!: FormGroup<{ inputData: FormControl<string | null> }>
 

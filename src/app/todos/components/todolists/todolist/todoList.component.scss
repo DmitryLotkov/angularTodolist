@@ -1,5 +1,5 @@
-:host {
-  .todolistHeader {
+.todolist {
+  &__header {
     width: 100%;
     display: flex;
     column-gap: 0.5rem;
@@ -17,4 +17,9 @@
   -moz-box-shadow: 0 0 18px 0 rgba(34, 60, 80, 0.2);
   box-shadow: 0 0 18px 0 rgba(34, 60, 80, 0.2);
   border-radius: 6px;
+
+  &__footer {
+    text-align: center;
+  }
+
 }

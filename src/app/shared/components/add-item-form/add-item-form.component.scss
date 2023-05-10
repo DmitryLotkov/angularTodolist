@@ -5,7 +5,12 @@
   input{
     margin-right: 0.5rem;
   }
-
+  &_input-full-width {
+    @extend .formContent;
+    input {
+      width: 100% !important;
+    }
+  }
 }
 ::ng-deep {
   .p-button {

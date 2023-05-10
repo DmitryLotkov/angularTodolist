@@ -1,5 +1,5 @@
 <form [formGroup]="addItemForm" (keyup.enter)="inputHandler()" (ngSubmit)="inputHandler()">
-  <div class='formContent'>
+  <div [ngClass]="isFullWidth ? 'formContent_input-full-width' : 'formContent'">
       <label for="inputData"></label>
       <input [placeholder]="formPlaceholder"
              type="text"

@@ -1,15 +1,19 @@
-<div class='todolistHeader'>
+<div class="todolist">
+  <div class='todolist__header'>
 
-  <h4><app-editable-field [title]="todolist.title" (submitInputData)="editTodolistTitle($event)"></app-editable-field></h4>
-  <p-button icon='pi pi-trash'
-            styleClass='p-button-rounded p-button-danger p-button-text'
-            (click)='deleteTodoHandler()'>
-  </p-button>
+    <h4>
+      <app-editable-field [title]="todolist.title" (submitInputData)="editTodolistTitle($event)"></app-editable-field>
+    </h4>
+    <p-button icon='pi pi-trash'
+              styleClass='p-button-rounded p-button-danger p-button-text'
+              (click)='deleteTodoHandler()'>
+    </p-button>
 
+  </div>
+  <app-add-item-form [isFullWidth]=true formPlaceholder='Enter task title' (submitTitle)="createTask($event)"></app-add-item-form>
+  <app-tasks [todoListId]='todolist.id'></app-tasks>
+  <footer class='todolist__footer'>created: {{ todolist.addedDate | date:'dd.MM.yy HH:mm' }}</footer>
 </div>
-<app-add-item-form formPlaceholder='Enter task title' (submitTitle)="createTask($event)"></app-add-item-form>
-<app-tasks [todoListId]='todolist.id'></app-tasks>
-<div>created: {{ todolist.addedDate | date:'dd.MM.yy HH:mm' }}</div>
 
 
 

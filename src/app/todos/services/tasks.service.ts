@@ -2,8 +2,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, map} from 'rxjs';
 import {environment} from '../../environment/enviroment.prod';
-import {DomainTasks, IGetTasksResponse, ITask, UpdateTaskModel} from '../components/tasks/model/task.model';
+import {
+  DomainTasks,
+  IGetTasksResponse,
+  ITask,
+  TaskStatusEnum,
+  UpdateTaskModel
+} from '../components/tasks/model/task.model';
 import {ICommonResponse} from "../../shared/models/core.model";
+import {TFilterType} from "../todolist.model";
 
 
 @Injectable({

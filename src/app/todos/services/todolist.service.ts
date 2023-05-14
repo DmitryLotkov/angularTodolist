@@ -57,7 +57,6 @@ export class TodolistService {
     const stateTodolists:DomainTodolist[] = this.todoLists$.getValue()
       .map(item => item.id === todoListId ? {...item, filter}: item)
     this.todoLists$.next(stateTodolists)
-    console.log(this.todoLists$.getValue())
   }
 }
 

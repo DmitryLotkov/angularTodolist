@@ -30,5 +30,6 @@ export class TodoListComponent {
 
   changeFilter(filter: TFilterType) {
     this.todolistService.updateTodolistFilter(filter, this.todolist.id)
+
   }
 }

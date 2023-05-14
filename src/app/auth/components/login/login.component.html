@@ -17,9 +17,6 @@
              id="email" pInputText
              formControlName="email"
              required minlength="4"
-             [ngClass]="{
-      inputError: email!.invalid && (email!.touched),
-      inputSuccess: email!.valid}"
       />
       <div *ngIf="email!.invalid && (email!.touched)" class="emailError">
         <div *ngIf="email!.errors?.['required']">Email is required.</div>
@@ -42,15 +39,14 @@
 
     <div class="login-wrapper__rememberMe">
       <label for="rememberMe">Remember me:</label>
-      <p-checkbox formControlName="rememberMe" [binary]="true" inputId="rememberMe"></p-checkbox>
+      <p-checkbox formControlName="rememberMe" [value]="true" [binary]="true" inputId="rememberMe"></p-checkbox>
     </div>
 
 
-    <p-button type="submit"
-              class="login-content__submitButton"
-              label="Submit"
-              [disabled]="loginForm.invalid">
-    </p-button>
+    <div class="p-fluid">
+      <p-button type="submit" label="Submit"
+                [disabled]="loginForm.invalid"></p-button>
+    </div>
 
   </form>
 </div>

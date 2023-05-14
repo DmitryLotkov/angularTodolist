@@ -1,79 +1,55 @@
 <div class="login-wrapper">
-  <div class="login-content">
-    <div class="login-content__text">
-      <p>To log in get registered
-        <a href='https://social-network.samuraijs.com/'
-           rel="noreferrer"> here
-        </a>
-      </p>
-      <p>or use common test account credentials:</p>
-      <p>Email: free@samuraijs.com</p>
-      <p>Password: free</p>
-    </div>
-    <form [formGroup]="loginForm" (ngSubmit)="dispatchInputData()"
-          style="display: flex; flex-direction: column; justify-content: space-between; height: 150px">
-      <div>
-        <div style="margin-bottom: 1rem">
-
-          <label for="email"></label>
-          <input placeholder="email"
-                 type="text"
-                 class="p-inputtext-sm"
-                 id="email" pInputText
-                 formControlName="email"
-                 required minlength="4"
-                 [ngClass]="{
+  <div class="login-wrapper__text">
+    <p>To log in get registered
+      <a href='https://social-network.samuraijs.com/'
+         rel="noreferrer"> here
+      </a>
+    </p>
+    <p>or use common test account credentials:</p>
+    <p>Email: free@samuraijs.com</p>
+    <p>Password: free</p>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="dispatchInputData()" class="login-wrapper__form">
+    <div class="login-wrapper__inputFields"><label for="email"></label>
+      <input placeholder="email"
+             type="text"
+             class="p-inputtext-sm"
+             id="email" pInputText
+             formControlName="email"
+             required minlength="4"
+             [ngClass]="{
       inputError: email!.invalid && (email!.touched),
       inputSuccess: email!.valid}"
-          />
-
-        </div>
-        <div *ngIf="email!.invalid && (email!.touched)"
-             class="error">
-          <div *ngIf="email!.errors?.['required']">
-            Email is required.
-          </div>
-          <div *ngIf="email!.errors?.['minlength']">
-            Email must be at least 4 characters long.
-          </div>
-          <div *ngIf="email!.errors?.['pattern']">
-            Email is incorrect.
-          </div>
-        </div>
-
-        <div>
-          <label for="password"></label>
-          <input placeholder="pass"
-                 type="text"
-                 class="p-inputtext-sm"
-                 id="password" pInputText
-                 formControlName="password"
-                 required/>
-        </div>
-        <div *ngIf="pass!.invalid && (pass!.touched)"
-             class="error">
-          <div *ngIf="pass!.errors!['required']">
-            Password is required.
-          </div>
-          <div *ngIf="pass!.errors!['minlength']">
-            Password must be at least {{passMinLength}} characters long.
-          </div>
-        </div>
-
-        <div class="login-content__rememberMe">
-          <label for="rememberMe">Remember me:</label>
-          <p-checkbox formControlName="rememberMe" [binary]="true" inputId="rememberMe"></p-checkbox>
-        </div>
+      />
+      <div *ngIf="email!.invalid && (email!.touched)" class="emailError">
+        <div *ngIf="email!.errors?.['required']">Email is required.</div>
+        <div *ngIf="email!.errors?.['minlength']">Email must be at least 4 characters long.</div>
+        <div *ngIf="email!.errors?.['pattern']">Email is incorrect.</div>
       </div>
 
-      <p-button type="submit"
-                class="login-content__submitButton"
-                label="Submit"
-                [disabled]="loginForm.invalid">
-      </p-button>
+      <label for="password"></label>
+      <input placeholder="pass"
+             type="password"
+             class="p-inputtext-sm"
+             id="password" pInputText
+             formControlName="password"
+             required/>
+      <div *ngIf="pass!.invalid && (pass!.touched)" class="passError">
+        <div *ngIf="pass!.errors!['required']">Password is required.</div>
+        <div *ngIf="pass!.errors!['minlength']">Password must be at least {{passMinLength}} characters long.</div>
+      </div>
+    </div>
 
-    </form>
-  </div>
+    <div class="login-wrapper__rememberMe">
+      <label for="rememberMe">Remember me:</label>
+      <p-checkbox formControlName="rememberMe" [binary]="true" inputId="rememberMe"></p-checkbox>
+    </div>
 
+    <p-button type="submit"
+              class="login-content__submitButton"
+              label="Submit"
+              [disabled]="loginForm.invalid">
+    </p-button>
 
+  </form>
 </div>

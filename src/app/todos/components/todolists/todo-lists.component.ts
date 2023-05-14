@@ -18,4 +18,9 @@ export class TodoListsComponent implements OnInit {
     this.todolistService.getTodos();
     this.todos$ = this.todolistService.todoLists$;
   }
+
+  createTodoList(inputTitle: string | null) {
+    this.todolistService.addTodos(inputTitle)
+  }
+
 }

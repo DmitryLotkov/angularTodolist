@@ -8,11 +8,4 @@ import {TodolistService} from './todos/services/todolist.service';
 })
 export class AppComponent {
   title = 'todo';
-  constructor(private todolistService:TodolistService) {
-  }
-
-  createTodoList(inputTitle: string | null) {
-    this.todolistService.addTodos(inputTitle)
-  }
-
 }

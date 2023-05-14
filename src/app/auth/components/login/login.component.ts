@@ -27,16 +27,16 @@ export class LoginComponent implements OnInit{
   }
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl("", [
+      email: new FormControl<string | null>("", [
         Validators.required,
         Validators.minLength(4),
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/)
       ]),
-      password: new FormControl("", [
+      password: new FormControl<string | null>("", [
         Validators.required,
         Validators.minLength(this.passMinLength),
       ]),
-      rememberMe: new FormControl(true)
+      rememberMe: new FormControl<boolean | null>(true)
     })
   }
 }

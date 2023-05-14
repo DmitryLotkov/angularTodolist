@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {DomainTodolist, ITodoList, TFilterType} from '../../../todolist.model';
+import {DomainTodolist, TFilterType} from '../../../todolist.model';
 import {TodolistService} from '../../../services/todolist.service';
 import {TasksService} from "../../../services/tasks.service";
 

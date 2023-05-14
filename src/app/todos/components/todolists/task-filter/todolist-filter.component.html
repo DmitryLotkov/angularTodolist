@@ -1,0 +1,15 @@
+<p-button label="All"
+          [styleClass]="filter === 'all' ? 'p-button-help' :'p-button-info p-button-raised'"
+          (onClick)="changeFilterHandler('all')">
+</p-button>
+
+<p-button label="Completed"
+          [styleClass]="filter === 'completed' ? 'p-button-help' :'p-button-info p-button-raised'"
+          (onClick)="changeFilterHandler('completed')">
+</p-button>
+
+<p-button label="Active"
+          [styleClass]="filter === 'active' ? 'p-button-help' :'p-button-info p-button-raised'"
+          (onClick)="changeFilterHandler('active')">
+</p-button>
+

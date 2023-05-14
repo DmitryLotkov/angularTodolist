@@ -4,3 +4,9 @@ export interface ITodoList {
   addedDate: string
   order: number
 }
+
+export type TFilterType = "all" | "completed" | "active"
+
+export interface DomainTodolist extends ITodoList{
+  filter: TFilterType
+}

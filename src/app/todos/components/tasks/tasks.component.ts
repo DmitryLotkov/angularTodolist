@@ -19,6 +19,4 @@ export class TasksComponent implements OnInit {
     this.tasks$ = this.taskService.tasks$.pipe(map((tasks) => tasks[this.todoListId]))
     this.taskService.getTasks(this.todoListId);
   }
-
-  protected readonly TaskStatusEnum = TaskStatusEnum;
 }

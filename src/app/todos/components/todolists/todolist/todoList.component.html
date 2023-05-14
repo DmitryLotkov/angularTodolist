@@ -12,6 +12,7 @@
   </div>
   <app-add-item-form [isFullWidth]=true formPlaceholder='Enter task title' (submitTitle)="createTask($event)"></app-add-item-form>
   <app-tasks [todoListId]='todolist.id'></app-tasks>
+  <app-todo-filter (changeFilterEvent)="changeFilter($event)" [filter]="todolist.filter" ></app-todo-filter>
   <footer class='todolist__footer'>created: {{ todolist.addedDate | date:'dd.MM.yy HH:mm' }}</footer>
 </div>
 

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ITodoList} from '../../../todolist.model';
+import {DomainTodolist, ITodoList, TFilterType} from '../../../todolist.model';
 import {TodolistService} from '../../../services/todolist.service';
 import {TasksService} from "../../../services/tasks.service";
 
@@ -10,7 +10,7 @@ import {TasksService} from "../../../services/tasks.service";
 })
 export class TodoListComponent {
 
-  @Input() todolist!: ITodoList
+  @Input() todolist!: DomainTodolist
 
   constructor(private todolistService: TodolistService,
               private taskService: TasksService) {
@@ -19,10 +19,16 @@ export class TodoListComponent {
   deleteTodoHandler():void {
     this.todolistService.deleteTodolist(this.todolist.id)
   }
+
   createTask(title: string | null):void {
     this.taskService.createTask(this.todolist.id, title)
   }
+
   editTodolistTitle(title: string):void {
     return this.todolistService.editTodolistTitle(this.todolist.id, title)
+  }
+
+  changeFilter(filter: TFilterType) {
+    this.todolistService.updateTodolistFilter(filter, this.todolist.id)
   }
 }

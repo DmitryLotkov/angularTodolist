@@ -1,0 +1,21 @@
+::ng-deep {
+  .p-button-success {
+    padding: 0.2rem 1rem !important;
+    /*height: 20px !important;*/
+  }
+  .p-button-help{
+    @extend .p-button-success;
+  }
+  .p-button-info {
+    @extend .p-button-success;
+  }
+  .p-button-warning {
+    @extend .p-button-success;
+  }
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px
+}

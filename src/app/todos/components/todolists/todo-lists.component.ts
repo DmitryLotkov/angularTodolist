@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TodolistService} from '../../services/todolist.service';
 import {Observable} from 'rxjs';
-import {ITodoList} from '../../todolist.model';
+import {DomainTodolist} from '../../todolist.model';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {ITodoList} from '../../todolist.model';
   styleUrls: ['./todo-lists.component.scss'],
 })
 export class TodoListsComponent implements OnInit {
-  todos$!: Observable<ITodoList[]>
+  todos$!: Observable<DomainTodolist[]>
 
   constructor(private todolistService: TodolistService) {}
 

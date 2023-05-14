@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {SharedModule} from '../shared/shared.module';
 import { TaskComponent } from './components/tasks/task/task.component';
+import { TodolistFilterComponent } from './components/todolists/task-filter/todolist-filter.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { TaskComponent } from './components/tasks/task/task.component';
     TodoListsComponent,
     TodoListComponent,
     TasksComponent,
-    TaskComponent
+    TaskComponent,
+    TodolistFilterComponent
   ],
   imports: [
     CommonModule,

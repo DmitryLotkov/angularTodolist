@@ -1,6 +1,15 @@
 :host {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 60px;
-  margin-top: 40px;
+
+  ::ng-deep .p-menubar {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-bottom: 40px;
+  }
+  .todolistContent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 60px;
+    margin: 0 150px 40px;
+  }
 }

@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 
+interface LoginFormGroup {
+  email: FormControl<string>,
+  password: FormControl<string>
+  rememberMe: FormControl<boolean>
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

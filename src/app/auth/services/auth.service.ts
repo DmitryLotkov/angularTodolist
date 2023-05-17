@@ -31,4 +31,12 @@ export class AuthService {
       },
     );
   }
+
+  logOut() {
+    this.http.delete<ICommonResponse>(`${environment.baseUrl}/auth/login`).subscribe((res) => {
+      if(res.resultCode === ResultCodes.success){
+        this.router.navigate(["/login"])
+      }
+    })
+  }
 }

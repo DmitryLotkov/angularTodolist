@@ -13,6 +13,7 @@ import {ButtonModule} from 'primeng/button';
 import {SharedModule} from '../shared/shared.module';
 import { TaskComponent } from './components/tasks/task/task.component';
 import { TodolistFilterComponent } from './components/todolists/task-filter/todolist-filter.component';
+import {MenubarModule} from "primeng/menubar";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { TodolistFilterComponent } from './components/todolists/task-filter/todo
     FormsModule,
     ButtonModule,
     SharedModule,
+    MenubarModule,
   ],
 })
 export class TodosModule { }

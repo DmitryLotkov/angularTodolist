@@ -1,47 +1,53 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Form, ILoginRequest} from "../../../shared/models/core.model";
 
-interface LoginFormGroup {
-  email: FormControl<string>,
-  password: FormControl<string>
-  rememberMe: FormControl<boolean>
-}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
   passMinLength = 3
-  loginForm!: FormGroup
+  loginForm!: FormGroup<Form<ILoginRequest>>
 
 
   constructor(private authService: AuthService) {
+    this.loginForm = new FormGroup<Form<ILoginRequest>>({
+      email: new FormControl<string>("", {
+          nonNullable: true, validators: [Validators.required,
+            Validators.minLength(4),
+            Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/)]
+        }
+      ),
+      password: new FormControl<string>("", {
+          nonNullable: true, validators: [
+            Validators.required,
+            Validators.minLength(this.passMinLength)
+          ]
+        }
+      ),
+      rememberMe: new FormControl<boolean>(true, {nonNullable: true,})
+    });
+
   }
+
   dispatchInputData() {
-    this.authService.login(this.loginForm.value)
+    this.authService.login(this.loginForm.getRawValue())
     this.loginForm.reset()
 
   }
-  get email(){
+
+  get email() {
     return this.loginForm.get('email')
   }
-  get pass(){
+
+  get pass() {
     return this.loginForm.get('password')
   }
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl<string>("", [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/)
-      ]),
-      password: new FormControl<string>("", [
-        Validators.required,
-        Validators.minLength(this.passMinLength),
-      ]),
-      rememberMe: new FormControl<boolean>(true)
-    })
-  }
+
+
+
 }

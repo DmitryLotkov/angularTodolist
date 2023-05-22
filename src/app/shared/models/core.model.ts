@@ -1,3 +1,5 @@
+import {FormControl, FormGroup} from "@angular/forms";
+
 export interface ICommonResponse<T = {}> {
   data: T;
   messages: string[];
@@ -24,3 +26,6 @@ export interface ILoginRequest {
   password: string
   rememberMe: boolean
 }
+export type Form<T> = {
+  [P in keyof T]: T[P] extends 'object' ? FormGroup<Form<T[P]>> : FormControl<T[P]>;
+};

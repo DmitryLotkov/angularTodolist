@@ -26,7 +26,7 @@ export class AuthService {
     this.http.post<ICommonResponse<ILoginResponse>>(`${environment.baseUrl}/auth/login`, {...data}).subscribe((res) => {
         if (res.resultCode === ResultCodes.success) {
           this.userId = res.data.userId;
-          this.router.navigate([""])
+          this.router.navigate(["/"])
         }
       },
     );

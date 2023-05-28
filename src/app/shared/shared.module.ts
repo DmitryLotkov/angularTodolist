@@ -7,12 +7,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import { EditableFieldComponent } from './components/editable-field/editable-field.component';
+import { NotifyComponentComponent } from './components/notify-component/notify-component.component';
+import {MessagesModule} from "primeng/messages";
 
 
 @NgModule({
   declarations: [
     AddItemFormComponent,
     EditableFieldComponent,
+    NotifyComponentComponent,
   ],
   imports: [
     CommonModule,
@@ -21,10 +24,12 @@ import { EditableFieldComponent } from './components/editable-field/editable-fie
     ReactiveFormsModule,
     ButtonModule,
     FormsModule,
+    MessagesModule,
   ],
     exports: [
         AddItemFormComponent,
         EditableFieldComponent,
+        NotifyComponentComponent,
     ],
 })
 export class SharedModule { }

@@ -3,7 +3,7 @@ import {TodolistService} from '../../services/todolist.service';
 import {Observable} from 'rxjs';
 import {DomainTodolist} from '../../todolist.model';
 import {MenuItem} from "primeng/api";
-import {AuthService} from "../../../auth/services/auth.service";
+import {AuthService} from "../../../core/services/auth.service";
 
 
 @Component({

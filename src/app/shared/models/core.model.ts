@@ -29,3 +29,10 @@ export interface ILoginRequest {
 export type Form<T> = {
   [P in keyof T]: T[P] extends 'object' ? FormGroup<Form<T[P]>> : FormControl<T[P]>;
 };
+
+type TSeverityType = "succsess" | "error" | "info"
+
+export interface INotification{
+  message: string;
+  severity: TSeverityType
+}

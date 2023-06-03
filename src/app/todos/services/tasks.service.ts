@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {BehaviorSubject, catchError, EMPTY, map} from 'rxjs';
+import {BehaviorSubject, catchError, EMPTY} from 'rxjs';
 import {environment} from '../../environment/enviroment.prod';
 import {DomainTasks, IGetTasksResponse, ITask, UpdateTaskModel} from '../components/tasks/model/task.model';
 import {ICommonResponse, ResultCodes} from "../../shared/models/core.model";

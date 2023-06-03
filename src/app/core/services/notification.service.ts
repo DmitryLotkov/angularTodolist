@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {INotification} from "../../shared/models/core.model";
 
 
 @Injectable({
@@ -12,4 +11,5 @@ export class NotificationService {
   handleError(message: string) {
     this.notify$.next(message)
   }
+
 }

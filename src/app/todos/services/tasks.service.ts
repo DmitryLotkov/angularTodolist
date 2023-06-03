@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, map} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {BehaviorSubject, catchError, EMPTY, map} from 'rxjs';
 import {environment} from '../../environment/enviroment.prod';
 import {DomainTasks, IGetTasksResponse, ITask, UpdateTaskModel} from '../components/tasks/model/task.model';
-import {ICommonResponse} from "../../shared/models/core.model";
+import {ICommonResponse, ResultCodes} from "../../shared/models/core.model";
+import {NotificationService} from "../../core/services/notification.service";
 
 
 @Injectable({
@@ -11,20 +12,21 @@ import {ICommonResponse} from "../../shared/models/core.model";
 })
 export class TasksService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient, private notificationService: NotificationService) {}
 
   tasks$ = new BehaviorSubject<DomainTasks>({})
 
   getTasks(todoListId: string) {
     return this.http
       .get<IGetTasksResponse>(`${environment.baseUrl}/todo-lists/${todoListId}/tasks`)
-      .pipe(map(res => res.items))
-      .subscribe((tasks: ITask[]) => {
-
-        const stateTasks = this.tasks$.getValue()
-        stateTasks[todoListId] = tasks
-        this.tasks$.next(stateTasks)
+      .pipe(catchError(this.errorHandler.bind(this))).subscribe((res) => {
+        if (!res.error) {
+          const stateTasks = this.tasks$.getValue()
+          stateTasks[todoListId] = res.items
+          this.tasks$.next(stateTasks)
+        } else {
+          this.notificationService.handleError(res.error)
+        }
       })
 
   }
@@ -32,51 +34,55 @@ export class TasksService {
   createTask(todoListId: string, title: string | null) {
     return this.http
       .post<ICommonResponse<{ item: ITask }>>(`${environment.baseUrl}/todo-lists/${todoListId}/tasks`, {title})
-      .pipe(map((res) => {
-        const stateTasks = this.tasks$.getValue()
-        stateTasks[todoListId] = [res.data.item, ...stateTasks[todoListId]]
-        return stateTasks
-      }))
-      .subscribe((tasks: DomainTasks) => {
-        this.tasks$.next(tasks)
+      .pipe(catchError(this.errorHandler.bind(this))).subscribe((res) => {
+        if (res.resultCode === ResultCodes.success) {
+          const stateTasks = this.tasks$.getValue()
+          stateTasks[todoListId] = [res.data.item, ...stateTasks[todoListId]]
+          this.tasks$.next(stateTasks)
+        } else {
+          this.notificationService.handleError(res.messages[0])
+        }
       })
   }
 
   deleteTask(todoListId: string, taskId: string) {
     return this.http.delete<ICommonResponse>(`${environment.baseUrl}/todo-lists/${todoListId}/tasks/${taskId}`)
-      .pipe(map(() => {
-        const stateTasks = this.tasks$.getValue()
-        stateTasks[todoListId] = stateTasks[todoListId].filter(task => task.id !== taskId)
-        return stateTasks
-      })).subscribe((tasks) => {
-        this.tasks$.next(tasks)
+      .pipe(catchError(this.errorHandler.bind(this))).subscribe((res) => {
+        if (res.resultCode === ResultCodes.success) {
+          const stateTasks = this.tasks$.getValue()
+          stateTasks[todoListId] = stateTasks[todoListId].filter(task => task.id !== taskId)
+          this.tasks$.next(stateTasks)
+        }
       })
   }
 
-  updateTaskTitle(model:ITask) {
+  updateTaskTitle(model: ITask) {
     return this.http.put<ICommonResponse<{ data: { item: ITask } }>>
-    (`${environment.baseUrl}/todo-lists/${model.todoListId}/tasks/${model.id}`, {title:model.title})
-      .pipe(map(() => {
-      const stateTasks = this.tasks$.getValue()
-      stateTasks[model.todoListId] = stateTasks[model.todoListId]
-        .map(task => task.id === model.id ? {...task, title: model.title} : task)
-      return stateTasks
-    })).subscribe((tasks) => {
-      this.tasks$.next(tasks)
-    })
+    (`${environment.baseUrl}/todo-lists/${model.todoListId}/tasks/${model.id}`, {title: model.title})
+      .pipe(catchError(this.errorHandler.bind(this))).subscribe((res) => {
+        if (res.resultCode === ResultCodes.success) {
+          const stateTasks = this.tasks$.getValue()
+          stateTasks[model.todoListId] = stateTasks[model.todoListId]
+            .map(task => task.id === model.id ? {...task, title: model.title} : task)
+          this.tasks$.next(stateTasks)
+        }
+      })
   }
 
   updateTaskStatus(todoListId: string, taskId: string, model: UpdateTaskModel) {
     return this.http.put<ICommonResponse<{ data: { item: ITask } }>>
     (`${environment.baseUrl}/todo-lists/${todoListId}/tasks/${taskId}`, model)
-      .pipe(map(() => {
-        const stateTasks = this.tasks$.getValue()
-        stateTasks[todoListId] = stateTasks[todoListId]
-          .map(task => task.id === taskId ? {...task, ...model} : task)
-        return stateTasks
-      })).subscribe((tasks) => {
-        this.tasks$.next(tasks)
+      .pipe(catchError(this.errorHandler.bind(this))).subscribe((res) => {
+        if (res.resultCode === ResultCodes.success) {
+          const stateTasks = this.tasks$.getValue()
+          stateTasks[todoListId] = stateTasks[todoListId]
+            .map(task => task.id === taskId ? {...task, ...model} : task)
+          this.tasks$.next(stateTasks)
+        }
       })
   }
-
+  private errorHandler(err: HttpErrorResponse) {
+    this.notificationService.handleError(err.message)
+    return EMPTY
+  }
 }

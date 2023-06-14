@@ -1,6 +1,6 @@
 # Stage 1: сборка приложения Angular
 FROM node:latest AS build
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app 
 COPY package.json yarn.lock ./
 RUN yarn install
 COPY . .

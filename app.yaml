@@ -1,0 +1,14 @@
+runtime: nodejs16
+
+instance_class: F2
+
+env_variables:
+  BUCKET_NAME: "ng-app-angular-bucket-lotkov"
+
+handlers:
+  - url: /
+    static_files: dist/todo/index.html
+    upload: dist/todo/index.html
+
+  - url: /
+    static_dir: dist/todo

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {DomainTodolist, ITodoList, TFilterType} from '../todolist.model';
 import {environment} from '../../environment/enviroment.prod';
 import {BehaviorSubject, catchError, EMPTY, map} from 'rxjs';

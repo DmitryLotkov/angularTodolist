@@ -3,9 +3,10 @@ import {ITask, TaskStatusEnum} from "../model/task.model";
 import {TasksService} from "../../../services/tasks.service";
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss']
+    selector: 'app-task',
+    templateUrl: './task.component.html',
+    styleUrls: ['./task.component.scss'],
+    standalone: false
 })
 export class TaskComponent implements OnInit {
   @Input() task!: ITask

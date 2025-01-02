@@ -7,7 +7,9 @@ import {CoreModule} from './core/core.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import '@angular/common/locales/global/ru';
 import {SharedModule} from './shared/shared.module';
-
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {providePrimeNG} from 'primeng/config';
+import Material from '@primeng/themes/Material';
 
 @NgModule({ declarations: [
         AppComponent
@@ -16,5 +18,14 @@ import {SharedModule} from './shared/shared.module';
         AppRoutingModule,
         BrowserAnimationsModule,
         CoreModule,
-        SharedModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        SharedModule], providers: [
+          provideHttpClient(withInterceptorsFromDi()),
+          provideAnimationsAsync(),
+            providePrimeNG({
+             theme: {
+            preset: Material
+        }
+    })
+  ]
+})
 export class AppModule { }

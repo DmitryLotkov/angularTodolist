@@ -7,9 +7,10 @@ import {TodolistService} from "../../services/todolist.service";
 
 
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss'],
+    selector: 'app-tasks',
+    templateUrl: './tasks.component.html',
+    styleUrls: ['./tasks.component.scss'],
+    standalone: false
 })
 export class TasksComponent implements OnInit {
   @Input() todoList!: DomainTodolist;

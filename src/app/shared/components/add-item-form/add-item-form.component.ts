@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-add-item-form',
-  templateUrl: './add-item-form.component.html',
-  styleUrls: ['./add-item-form.component.scss']
+    selector: 'app-add-item-form',
+    templateUrl: './add-item-form.component.html',
+    styleUrls: ['./add-item-form.component.scss'],
+    standalone: false
 })
 export class AddItemFormComponent implements OnInit{
   @Output() submitTitle = new EventEmitter<string | null>()

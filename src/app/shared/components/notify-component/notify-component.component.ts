@@ -1,16 +1,18 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NotificationService} from "../../../core/services/notification.service";
 import {BehaviorSubject, Subscription} from "rxjs";
-import {Message} from "primeng/api";
+import {Message} from 'primeng/message';
+
 
 @Component({
-  selector: 'app-notify-component',
-  templateUrl: './notify-component.component.html',
-  styleUrls: ['./notify-component.component.scss']
+    selector: 'app-notify-component',
+    templateUrl: './notify-component.component.html',
+    styleUrls: ['./notify-component.component.scss'],
+    standalone: false
 })
 export class NotifyComponentComponent implements OnInit, OnDestroy {
   notify$ = new BehaviorSubject<string | null>(null);
-  messages!: Message[];
+  message!: Message;
   private subscription: Subscription | undefined;
   private timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -21,11 +23,9 @@ export class NotifyComponentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.notify$.subscribe((value) => {
       if (value && this.notify$.getValue()) {
-        this.messages = [
-          { severity: 'error', summary: 'Error', detail: value },
-        ];
+        this.message = { severity: 'error', text: value } as Message;
         this.timer = setTimeout(() => {
-          this.messages = [];
+          this.message = {} as Message;
         }, 3000);
       }
     });

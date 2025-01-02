@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-editable-field',
-  templateUrl: './editable-field.component.html',
-  styleUrls: ['./editable-field.component.scss']
+    selector: 'app-editable-field',
+    templateUrl: './editable-field.component.html',
+    styleUrls: ['./editable-field.component.scss'],
+    standalone: false
 })
 export class EditableFieldComponent {
 

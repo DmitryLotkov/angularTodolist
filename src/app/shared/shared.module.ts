@@ -9,6 +9,7 @@ import {ButtonModule} from 'primeng/button';
 import { EditableFieldComponent } from './components/editable-field/editable-field.component';
 import { NotifyComponentComponent } from './components/notify-component/notify-component.component';
 import {MessagesModule} from "primeng/messages";
+import {Message} from 'primeng/message';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MessagesModule} from "primeng/messages";
     ButtonModule,
     FormsModule,
     MessagesModule,
+    Message,
   ],
     exports: [
         AddItemFormComponent,

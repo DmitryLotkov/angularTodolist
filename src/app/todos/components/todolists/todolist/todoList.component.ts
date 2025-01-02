@@ -4,9 +4,10 @@ import {TodolistService} from '../../../services/todolist.service';
 import {TasksService} from "../../../services/tasks.service";
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todoList.component.html',
-  styleUrls: ['./todoList.component.scss'],
+    selector: 'app-todo',
+    templateUrl: './todoList.component.html',
+    styleUrls: ['./todoList.component.scss'],
+    standalone: false
 })
 export class TodoListComponent {
 
